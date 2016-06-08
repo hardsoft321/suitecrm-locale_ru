@@ -50,9 +50,7 @@ function post_install() {
 <p>Если вы не регистрировались на нашем сайте и не запрашивали восстановление пароля, просто проигнорируйте это письмо.</p>
 </td>         </tr><tr><td></td>         </tr></tbody></table></div>';
     $tmpl->save();
-    if(empty($configuratorObj->config['passwordsetting']['generatepasswordtmpl'])) {
-        $configuratorObj->config['passwordsetting']['generatepasswordtmpl'] = $tmpl->id;
-    }
+    $configuratorObj->config['passwordsetting']['generatepasswordtmpl'] = $tmpl->id;
 
     $LOSTPASSWORDTMPL_NAME = 'Шаблон письма, содержащий автоматически сгенерированную ссылку сброса пароля';
     $tmpl = BeanFactory::newBean('EmailTemplates');
@@ -75,9 +73,7 @@ $contact_user_link_guid
 <p> $contact_user_link_guid </p>
 </td>         </tr><tr><td></td>         </tr></tbody></table></div>';
     $tmpl->save();
-    if(empty($configuratorObj->config['passwordsetting']['lostpasswordtmpl'])) {
-        $configuratorObj->config['passwordsetting']['lostpasswordtmpl'] = $tmpl->id;
-    }
+    $configuratorObj->config['passwordsetting']['lostpasswordtmpl'] = $tmpl->id;
 
     $configuratorObj->saveConfig();
 }
