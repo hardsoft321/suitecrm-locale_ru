@@ -5,7 +5,6 @@
  */
 function post_install() {
     $newConfig = array(
-        'default_language' => 'ru_ru',
         'default_date_format' => 'd.m.Y',
         'default_time_format' => 'H:i',
         'default_locale_name_format' => 'f l',
@@ -16,6 +15,9 @@ function post_install() {
         'default_decimal_seperator' => ',',
         'default_number_grouping_seperator' => ' ',
     );
+    if (isset($GLOBALS['sugar_config']['languages']['ru_ru'])) {
+        $newConfig['default_language'] = 'ru_ru';
+    }
     require_once 'modules/Configurator/Configurator.php';
     $configuratorObj = new Configurator();
     $configuratorObj->loadConfig();
